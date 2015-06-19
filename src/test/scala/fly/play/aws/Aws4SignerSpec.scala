@@ -1,21 +1,20 @@
 package fly.play.aws
 
+import com.ning.http.client.AsyncHttpClientConfig
+import java.net.URLEncoder
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
-import scala.collection.mutable
 import org.specs2.mutable.Specification
-import play.api.libs.ws.WSRequestHolder
+import play.api.http.ContentTypeOf
+import play.api.libs.ws.ning.NingWSClient
+import play.api.libs.ws.WSRequest
+import scala.collection.mutable
 import scala.concurrent.Future
 import scala.concurrent.duration._
-import org.specs2.time.NoTimeConversions
-import com.ning.http.client.AsyncHttpClientConfig
-import play.api.libs.ws.ning.NingWSClient
-import play.api.http.ContentTypeOf
-import java.net.URLEncoder
 import scala.language.reflectiveCalls
 
-object Aws4SignerSpec extends Specification with NoTimeConversions {
+object Aws4SignerSpec extends Specification {
 
   "Aws4Signer" should {
 
@@ -383,7 +382,7 @@ object Aws4SignerSpec extends Specification with NoTimeConversions {
   }
 
   class AmzContentHeaderSignerSpy extends SignerSpy {
-    override def sign(request: WSRequestHolder, method: String, body: Array[Byte]): WSRequestHolder =
+    override def sign(request: WSRequest, method: String, body: Array[Byte]): WSRequest =
       super.sign(request.withHeaders(amzContentSha256(Array.empty)), method, body)
   }
 

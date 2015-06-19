@@ -2,9 +2,6 @@ package fly.play.s3
 
 import java.util.Date
 
-import scala.concurrent.{ Await, Future }
-import scala.concurrent.duration.Duration
-import scala.util.{ Failure, Success }
 import fly.play.aws.AwsUrlEncoder
 import fly.play.aws.acl.{ CanonicalUser, FULL_CONTROL, Grant, Group, READ }
 import fly.play.aws.policy.Condition
@@ -15,6 +12,10 @@ import play.api.libs.json.Json
 import play.api.libs.json.Json.toJsFieldJsValueWrapper
 import play.api.libs.ws.WS
 import play.api.test.Helpers.running
+import scala.concurrent.duration.Duration
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{ Failure, Success }
 import utils.MultipartFormData
 
 class S3BucketSpec extends S3SpecSetup {

@@ -24,7 +24,7 @@ object AwsCredentials extends ((String, String, Option[String]) => AwsCredential
     def error(key:String) = throw new PlayException("Configuration error", "Could not find " + key + " in settings")
     def getOpt(key:String) = app.configuration getString key
     def get(key:String) = getOpt(key) getOrElse error(key)
-    
+
     SimpleAwsCredentials(get(s"${prefix}.accessKeyId"), get(s"${prefix}.secretKey"), getOpt(s"${prefix}.token"))
   }
 }
