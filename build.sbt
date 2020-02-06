@@ -1,15 +1,15 @@
-val playVersion = "2.7.0"
+val playVersion = "2.7.3"
 
 lazy val root = (project in file("."))
   .settings(
     name := "play-s3",
     organization := "net.kaliber",
-    scalaVersion := "2.12.2",
+    scalaVersion := "2.13.0",
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-ws"     % playVersion % "provided",
       "com.typesafe.play" %% "play-test"   % playVersion % "test",
       "com.typesafe.play" %% "play-specs2" % playVersion % "test",
-      "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
       "com.typesafe.play" %% "play-ahc-ws" % playVersion % "test",
       "com.typesafe.play" %% "play-logback" % playVersion % "test",
       "commons-codec" % "commons-codec" % "1.11" % "provided",
