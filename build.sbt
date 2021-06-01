@@ -3,13 +3,12 @@ val playVersion = "2.7.6"
 lazy val root = (project in file("."))
   .settings(
     name := "play-s3",
-    organization := "net.kaliber",
+    organization := "ch.wavein",
     scalaVersion := "2.13.3",
-    bintrayRepository := "maven",
-    bintrayOrganization := Some("waveinch"),
-    publishMavenStyle := true,
     licenses += ("Apache-2.0", url("http://www.opensource.org/licenses/apache2.0.php")),
-    git.useGitDescribe := true,
+    developers := List(
+      Developer(id="minettiandrea", name="Andrea Minetti", email="andrea@wavein.ch", url=url("https://wavein.ch")),
+    ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-ws"     % playVersion % "provided",
       "com.typesafe.play" %% "play-test"   % playVersion % "test",
@@ -20,9 +19,7 @@ lazy val root = (project in file("."))
       "commons-codec" % "commons-codec" % "1.11" % "provided",
       "com.typesafe.play" % "shaded-asynchttpclient" % "2.0.1" % "provided"
     )
-  ).enablePlugins(
-  GitVersioning
-)
+  )
 
 
 scalacOptions ++= Seq("-feature", "-deprecation")
