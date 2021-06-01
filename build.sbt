@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
     developers := List(
       Developer(id="minettiandrea", name="Andrea Minetti", email="andrea@wavein.ch", url=url("https://wavein.ch")),
     ),
+    homepage := Some(url("https://github.com/waveinch/play-s3")),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-ws"     % playVersion % "provided",
       "com.typesafe.play" %% "play-test"   % playVersion % "test",
@@ -20,6 +21,7 @@ lazy val root = (project in file("."))
       "com.typesafe.play" % "shaded-asynchttpclient" % "2.0.1" % "provided"
     )
   )
+
 
 
 scalacOptions ++= Seq("-feature", "-deprecation")
